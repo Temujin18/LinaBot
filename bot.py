@@ -22,20 +22,6 @@ async def on_ready():
     print("Bot is running.")
 
 
-@bot.event
-async def on_message(message):
-    if message.author == bot.user:
-        return
-
-    if isinstance(message.channel, discord.channel.DMChannel):  # catch DMs to bot
-        await message.channel.send("Thanks for the DM!")
-        return
-    elif message.content == "raise-exception":
-        raise discord.DiscordException
-
-    await bot.process_commands(message)
-
-
 @bot.command(name="br")
 async def broadcast(ctx, message: str):
     for guild in bot.guilds:
