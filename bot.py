@@ -6,6 +6,7 @@ from discord.ext import commands
 from discord.ext.commands.errors import (
     ExtensionAlreadyLoaded,
     ExtensionNotFound,
+    ExtensionNotLoaded,
 )
 from dotenv import load_dotenv
 
@@ -62,8 +63,6 @@ async def unload(ctx, extension):
         bot.unload_extension(f"cogs.{extension}")
         await ctx.send(f"{extension} has been unloaded.")
     except ExtensionNotLoaded as e:
-        await ctx.send(e)
-    except ExtensionNotFound as e:
         await ctx.send(e)
 
 
